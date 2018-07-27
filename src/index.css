@@ -1,3 +1,76 @@
-b {
-  color: green;
+html {
+  --color-git: #f05033;
+  font-family: sans-serif;
+  color: #9999aa;
+  font-weight: 400;
+}
+
+.loading {
+  top: 50%;
+  left: 50%;
+  text-align: center;
+  transform: translate(-50%, -50%);
+  position: absolute;
+}
+
+.loading svg {
+  filter: drop-shadow(2px 2px 3px #0004);
+}
+
+.loading svg>* {
+  display: none;
+}
+
+.loading__rect {
+  fill: var(--color-git);
+}
+
+.loading__line {
+  fill: none;
+  stroke: var(--color-git);
+  stroke-width: 5px;
+  stroke-linecap: round;
+}
+
+.loading__line--masked {
+  stroke: #ffffff;
+}
+
+.loading__dot {
+  fill: #ffffff;
+}
+
+#loading__mask {
+  fill: red;
+}
+
+.loading__rect--masked {
+  fill: #ffffff;
+}
+
+.loading__center {
+  display: inherit !important;
+  fill: none;
+  stroke: var(--color-git);
+  stroke-width: 30px;
+  transform: scale(0);
+  transform-origin: 50% 50%;
+}
+
+.active {
+  .loading__center {
+    animation: zoomOut 1s ease;
+  }
+}
+
+@keyframes zoomOut {
+  0%,
+  100% {
+    transform: scale(0);
+    stroke-width: 30px;
+  }
+  60% {
+    transform: scale(2);
+    stroke-width: 3px;
+  }
 }
