@@ -20,7 +20,7 @@ html {
 }
 
 .loading svg>* {
-  display: none;
+  opacity: 0;
 }
 
 .loading__rect {
@@ -48,31 +48,56 @@ html {
 
 .loading__rect--masked {
   fill: #ffffff;
+  transform: scale(0);
 }
 
 .loading__center {
-  display: inherit !important;
   fill: none;
   stroke: var(--color-git);
-  stroke-width: 30px;
   transform: scale(0);
   transform-origin: 50% 50%;
+  animation: loadingCenter 1s ease;
 }
 
-.active {
-  .loading__center {
-    animation: zoomOut 1s ease;
-  }
+.loading__line--1 {
+  animation: loadingLine1 10s ease infinite;
 }
 
-@keyframes zoomOut {
+.loading__line--2 {
+  animation: loadingLine2 10s ease infinite;
+}
+
+@keyframes loadingCenter {
   0%,
   100% {
+    opacity: 1;
     transform: scale(0);
     stroke-width: 30px;
   }
   60% {
     transform: scale(2);
     stroke-width: 3px;
+  }
+}
+
+@keyframes loadingLine1 {
+  0%,
+  100% {
+    opacity: 1;
+    stroke-dasharray: 1 1000;
+  }
+  60% {
+    stroke-dasharray: 1000 1;
+  }
+}
+
+@keyframes loadingLine2 {
+  0%,
+  100% {
+    /* opacity: 1; */
+    stroke-dasharray: 1 1000;
+  }
+  60% {
+    stroke-dasharray: 1000 1;
   }
 }
