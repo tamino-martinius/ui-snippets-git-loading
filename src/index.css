@@ -11,6 +11,8 @@ html {
   text-align: center;
   transform: translate(-50%, -50%);
   position: absolute;
+  opacity: 1 !important;
+  transition: opacity 0.2s;
 }
 
 .loading svg {
